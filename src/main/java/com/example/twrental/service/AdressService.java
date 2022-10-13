@@ -57,7 +57,7 @@ public class AdressService implements AdressServiceInterface{
 
     @Override
     public void deleteAdress(int id){
-        adressRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Person", "Id", id));
+        adressRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Adress", "Id", id));
         adressRepository.deleteById(id);
     }
 
