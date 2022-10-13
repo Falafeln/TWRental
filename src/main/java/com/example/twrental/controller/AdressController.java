@@ -32,7 +32,7 @@ public class AdressController {
     @GetMapping("/getAdress")
     public List<Adress> getAllAdress(){return adressService.getAllAdress();}
 
-    @GetMapping("/{id}")
+    @GetMapping("/adressID{id}")
     public ResponseEntity<Adress> getAdressById(@PathVariable("id") int id){
         return new ResponseEntity<Adress>(adressService.getAdressById(id),HttpStatus.OK);
     }
@@ -42,7 +42,7 @@ public class AdressController {
         return new ResponseEntity<Adress>(adressService.updateAdress(adress,id), HttpStatus.OK);
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/delete/Adress{id}")
     public ResponseEntity<String>deleteAdress(@PathVariable ("id") int id){
         adressService.deleteAdress(id);
         return new ResponseEntity<String>("Adress deleted!", HttpStatus.OK);

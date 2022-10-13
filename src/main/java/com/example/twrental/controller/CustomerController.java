@@ -15,32 +15,32 @@ import java.util.List;
 
 public class CustomerController {
     @Autowired
-    private CustomerService customerServiceService;
+    private CustomerService customerService;
 
     @Autowired
     private CustomerRepository customerRepository;
 
     @PostMapping("/saveCustomer")
     public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer){
-        return new ResponseEntity<Customer>(customerServiceService.saveCustomer(customer), HttpStatus.CREATED);
+        return new ResponseEntity<Customer>(customerService.saveCustomer(customer), HttpStatus.CREATED);
     }
 
     @GetMapping("/getCustomer")
-    public List<Customer> getAllCustomers(){return customerServiceService.getAllCustomers();}
+    public List<Customer> getAllCustomers(){return customerService.getAllCustomers();}
 
     @GetMapping("/getCustomerID{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable("id") int id){
-        return new ResponseEntity<Customer>(customerServiceService.getCustomerById(id),HttpStatus.OK);
+        return new ResponseEntity<Customer>(customerService.getCustomerById(id),HttpStatus.OK);
     }
 
     @GetMapping("/updateCustomer/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable("id") int id, @RequestBody Customer customer){
-        return new ResponseEntity<Customer>(customerServiceService.updateCustomer(customer,id), HttpStatus.OK);
+        return new ResponseEntity<Customer>(customerService.updateCustomer(customer,id), HttpStatus.OK);
     }
 
     @GetMapping("/deleteCustomer/{id}")
     public ResponseEntity<String>deleteCustomer(@PathVariable ("id") int id){
-        customerServiceService.deleteCustomer(id);
+        customerService.deleteCustomer(id);
         return new ResponseEntity<String>("Customer deleted!", HttpStatus.OK);
     }
 

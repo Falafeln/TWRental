@@ -49,7 +49,7 @@ public class CustomerService implements CustomerServiceInterface {
 
         c.setAdress(c.getAdress());
 
-        c.setBookings(c.getBookings());
+     //   c.setBookings(c.getBookings());
 
         customerRepository.save(c);
         return c;
