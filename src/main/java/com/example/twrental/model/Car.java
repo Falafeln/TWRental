@@ -32,12 +32,15 @@ public class Car {
     @Column(name = "ac", nullable = false)
     private boolean ac;
 
+    @Column(name = "booked", nullable = false)
+    private boolean booked;
+
     // Osäker vilken koppling
-    @OneToMany(mappedBy = "car", fetch = FetchType.EAGER)
-    private List<Booking> bookings = new ArrayList<>();
+   /* @OneToMany(mappedBy = "car", fetch = FetchType.EAGER)
+    private List<Booking> bookings = new ArrayList<>();*/
 
 
-    public Car(int car_id, String name, String model, double cost_per_day, int seats, String transmission, boolean ac) {
+    public Car(int car_id, String name, String model, double cost_per_day, int seats, String transmission, boolean ac, boolean booked) {
         this.car_id = car_id;
         this.name = name;
         this.model = model;
@@ -45,12 +48,9 @@ public class Car {
         this.seats = seats;
         this.transmission = transmission;
         this.ac = ac;
+        this.booked=booked;
     }
 
-    public Car(int car_id, List<Booking> bookings) {
-        this.car_id = car_id;
-        this.bookings = bookings;
-    }
 
     public Car() {
 
@@ -112,11 +112,11 @@ public class Car {
         this.ac = ac;
     }
 
-    public List<Booking> getBookings() {
-        return bookings;
+    public boolean isBooked() {
+        return booked;
     }
 
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
+    public void setBooked(boolean booked) {
+        this.booked = booked;
     }
 }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-
+@RequestMapping("/api/v1")
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
@@ -25,7 +25,7 @@ public class CustomerController {
         return new ResponseEntity<Customer>(customerService.saveCustomer(customer), HttpStatus.CREATED);
     }
 
-    @GetMapping("/getCustomer")
+    @GetMapping("/GET/api/v1/customers")
     public List<Customer> getAllCustomers(){return customerService.getAllCustomers();}
 
     @GetMapping("/getCustomerID{id}")

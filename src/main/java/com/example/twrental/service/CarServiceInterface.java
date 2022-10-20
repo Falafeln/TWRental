@@ -12,4 +12,6 @@ public interface CarServiceInterface {
     Car updateCar(Car car, int id);
     void deleteCar(int id);
 
+    Car createCar();
+
 }

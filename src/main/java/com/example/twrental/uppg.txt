@@ -1,0 +1,46 @@
+REST API med Spring Boot Bakgrund Wigellkoncernen har beslutat att bygga ett nytt bokningssystem för sin biluthyrning.
+Två grupper jobbar med projektet där en grupp ansvarar för användargränssnittet och en annan för det REST API som användargränssnittet kommunicerar med.
+Du arbetar med REST API:et som ska utvecklas med Java Spring Boot Lansering av API:et sker Måndag31/10kl 00:01så samtliga projekt måste vara inlämnade då!
+
+Kravspecifikation
+    Funktionella krav
+    Systemet ska ha funktionalitet för både kunder och administratörer.
+    Kund Systemet ska kunna hantera kunder, bilar, bokningar.
+    Bilar ska ha pris per dag, namn och modell.
+    Kunder ska ha unika id-nummer, användarnamn och kunduppgifter som namn och adress.
+    Bokningar ska inkludera datum för bokningen.
+
+    Kunderna ska kunna göra ett antal aktiviteter med följande endpoints:
+        •Lista tillgängliga bilar GET /api/v1/cars
+        •Boka hyrbilPOST /api/v1/ordercar
+        •Uppdatera orderPUT /api/v1/updateorder
+        •Se tidigare och aktiva bokningar GET /api/v1/myorders
+        •En microservice ska implementeras*GET /api/v1/exchangeAdmin
+
+    Administratörer ska kunna göra ett antal aktiviteter med följande endpoints:
+        •Lista kunder GET /api/v1/customers
+        •Lägga till fordon POST /api/v1/addcar
+        •Ta bort fordon DELETE /api/v1/deletecar
+        •Uppdaterafordon PUT /api/v1/updatecar
+        •Avboka order PUT /api/v1/cancelorder
+
+    Viktigt att alla endpoints följer specifikationen eftersom de ska fungera med användargränssnittet.
+
+    * Se Övrigt
+Tekniska krav Skapa de klasser som behövs för att lösa uppgiften och är vettiga designmässigt från informationen i kraven.
+Strukturera applikationen med lämpliga package så som controller, service, model osv.
+Data ska lagras i en MySQL databas.
+Databasen ska heta TWRental.
+ Verifiera med postman att alla endpoints går att använda enligt specifikation.
+ Säkerhet
+ För G, använd basic security.
+ För VG, använd keycloak
+
+ All admin funktionalitet ska kräva att användare är inloggad som ADMIN.
+ All kundfunktionalitet ska kräva inloggning med en användare som har rollen USER.
+ Skapa en användare med rollen USER. Skapa en användare med rollen ADMIN.
+ Övrigt Ingen frontend ska implementeras.
+ All kommunikation med API:et ska ske via Postman API:et ska nås på port 9090 Java 11 ska användas
+ Microservicen ”exchange” ska presentera bokningens pris i Euro.
+ För G, bygg en egen microservice som räknar med kursen 1 EUR = 11,6572 SEK
+ För VG, använd valfri microservice för valutakonvertering. Ex https://www.freeforexapi.com/

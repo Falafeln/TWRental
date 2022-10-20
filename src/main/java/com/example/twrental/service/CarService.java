@@ -45,6 +45,7 @@ public class CarService implements CarServiceInterface {
        c.setSeats(c.getSeats());
        c.setCost_per_day(c.getCost_per_day());
        c.setTransmission(c.getTransmission());
+       c.setBooked(c.isBooked());
 
        carRepository.save(c);
 
@@ -57,4 +58,21 @@ public class CarService implements CarServiceInterface {
         carRepository.deleteById(id);
 
     }
+
+    @Override
+    public Car createCar() {
+        //boolean booked, int seat, double costPerDay, String model, String name, boolean ac, String transmission
+        Car c = new Car();
+        c.setBooked(false);
+        c.setSeats(2);
+        c.setCost_per_day(2333);
+        c.setModel("Test");
+        c.setName("Volvo");
+        c.setAc(true);
+        c.setTransmission("Kvävgas");
+        carRepository.save(c);
+        return c;
+    }
+
+
 }
