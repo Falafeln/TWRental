@@ -21,10 +21,36 @@ public class CarController {
     @Autowired
     private CarRepository carRepository;
 
-    @PostMapping("/saveCar")
-    public ResponseEntity<Car> saveCar(@RequestBody Car c){
+  /*  @GetMapping("/cars") // !!!! MÅSTE ATT HA FUNGERANDE !!!!!!!!! <-- Kund ska kunna göra detta
+    public List <Car> findAvailableCar(boolean booked){
+        return carRepository.findCarByBookedOrderByModel(false);
+    }*/
+
+
+
+    @PostMapping("/addcar") // !!!! MÅSTE ATT HA FUNGERANDE !!!!!!!!! <-- ADMIN ska kunna göra detta
+    public ResponseEntity<Car> addcar(@RequestBody Car c){
         return new ResponseEntity<Car>(carService.saveCar(c), HttpStatus.CREATED);
     }
+
+    @PutMapping("/updatecar/{car_id}") // !!!! MÅSTE ATT HA FUNGERANDE !!!!!!!!! <-- ADMIN ska kunna göra detta
+    public ResponseEntity<Car> updateCar(@PathVariable("car_id") int id, @RequestBody Car car){
+        return new ResponseEntity<Car>(carService.updateCar(car,id), HttpStatus.OK);
+    }
+
+    @DeleteMapping ("/deletecar/{car_id}") // !!!! MÅSTE ATT HA FUNGERANDE !!!!!!!!! <-- ADMIN ska kunna göra detta
+    public ResponseEntity<String>deleteCar(@PathVariable ("car_id") int id){
+        carService.deleteCar(id);
+        return new ResponseEntity<String>("Car deleted!", HttpStatus.OK);
+
+        // <---- Se till så att om bilen är bokad måste bokningen tas bort först
+    }
+
+//__________________________________________
+
+
+
+
 
     @GetMapping("/getCar")
     public List<Car> getAllCars(){return carService.getAllCars();}
@@ -34,16 +60,9 @@ public class CarController {
         return new ResponseEntity<Car>(carService.getCarById(id),HttpStatus.OK);
     }
 
-    @PutMapping("/updatecar/{id}")
-    public ResponseEntity<Car> updateCar(@PathVariable("id") int id, @RequestBody Car car){
-        return new ResponseEntity<Car>(carService.updateCar(car,id), HttpStatus.OK);
-    }
 
-    @GetMapping("/deletecar/{id}")
-    public ResponseEntity<String>deleteCar(@PathVariable ("id") int id){
-        carService.deleteCar(id);
-        return new ResponseEntity<String>("Car deleted!", HttpStatus.OK);
-    }
+
+
 
     @GetMapping("/sortCarAsc")
     public List<Car>sortCarAsc(String model){
@@ -55,9 +74,6 @@ public class CarController {
         return carRepository.findCarByModelOrderByNameDesc(model);
     }
 
-    @GetMapping("/GET/api/v1/cars")
-    public List <Car> findAvailableCar(boolean booked){
-        return carRepository.findCarByBookedOrderByModel(false);
-    }
+
 
 }

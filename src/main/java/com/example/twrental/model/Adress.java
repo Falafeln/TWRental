@@ -35,14 +35,14 @@ private List<Customer>customers = new ArrayList<>();
     public Adress() {
     }
 
-    public Adress(int adress_id, String street, String street_number, String district, String country, String zipCode, List<Customer> customers) {
-        this.adress_id = adress_id;
+    public Adress(String street, String street_number, String district, String country, String zipCode) {
+
         this.street = street;
         this.street_number = street_number;
         this.district = district;
         this.country = country;
         this.zipCode = zipCode;
-        this.customers = customers;
+
     }
 
     /*

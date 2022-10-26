@@ -1,6 +1,9 @@
 package com.example.twrental.model;
 
 
+import org.springframework.context.annotation.Role;
+
+import javax.annotation.security.DeclareRoles;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,8 +32,8 @@ public class Admin {
     private String email;
 
 
-    public Admin(int admin_id, String username, String pwd, String firstname, String lastname, String phone, String email) {
-        this.admin_id = admin_id;
+    public Admin(String username, String pwd, String firstname, String lastname, String phone, String email) {
+
         this.username = username;
         this.pwd = pwd;
         this.firstname = firstname;
@@ -100,4 +103,6 @@ public class Admin {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
 }

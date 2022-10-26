@@ -39,13 +39,13 @@ public class CarService implements CarServiceInterface {
     @Override
     public Car updateCar(Car car, int id) {
         Car c = carRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Car", "Id", id));
-       c.setName(c.getName());
-       c.setModel(c.getModel());
-       c.setAc(c.isAc());
-       c.setSeats(c.getSeats());
-       c.setCost_per_day(c.getCost_per_day());
-       c.setTransmission(c.getTransmission());
-       c.setBooked(c.isBooked());
+       c.setName(car.getName());
+       c.setModel(car.getModel());
+       c.setAc(car.isAc());
+       c.setSeats(car.getSeats());
+       c.setCost_per_day(car.getCost_per_day());
+       c.setTransmission(car.getTransmission());
+
 
        carRepository.save(c);
 
@@ -54,25 +54,11 @@ public class CarService implements CarServiceInterface {
 
     @Override
     public void deleteCar(int id) {
-        carRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Car", "id", id));
+        carRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Car", "car_id", id));
         carRepository.deleteById(id);
 
     }
 
-    @Override
-    public Car createCar() {
-        //boolean booked, int seat, double costPerDay, String model, String name, boolean ac, String transmission
-        Car c = new Car();
-        c.setBooked(false);
-        c.setSeats(2);
-        c.setCost_per_day(2333);
-        c.setModel("Test");
-        c.setName("Volvo");
-        c.setAc(true);
-        c.setTransmission("Kvävgas");
-        carRepository.save(c);
-        return c;
-    }
 
 
 }

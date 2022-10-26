@@ -39,15 +39,13 @@ public class CustomerService implements CustomerServiceInterface {
     @Override
     public Customer updateCustomer(Customer customer, int id) {
         Customer c = customerRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Customer", "Id", id));
-        c.setFirst_name(c.getFirst_name());
-        c.setLast_name(c.getLast_name());
-        c.setUsername(c.getUsername());
-        c.setPwd(c.getPwd());
-        c.setEmail(c.getEmail());
-        c.setPhone(c.getPhone());
-
-
-        c.setAdress(c.getAdress());
+        c.setFirst_name(customer.getFirst_name());
+        c.setLast_name(customer.getLast_name());
+        c.setUsername(customer.getUsername());
+        c.setPwd(customer.getPwd());
+        c.setEmail(customer.getEmail());
+        c.setPhone(customer.getPhone());
+        c.setAdress(customer.getAdress());
 
      //   c.setBookings(c.getBookings());
 

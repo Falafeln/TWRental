@@ -27,18 +27,17 @@ public class Booking {
     @JoinColumn(name = "car_id", referencedColumnName = "car_id")
     private Car car;
 
-    @Column(name = "rent_date", nullable = false)
+    @Column(name = "rent_date")
     private LocalDateTime rent_date;
 
-    @Column(name = "return_date", nullable = false)
+    @Column(name = "return_date")
     private LocalDateTime return_date;
 
-    public Booking(int booking_id, Customer customer, Car car, LocalDateTime rent_date, LocalDateTime return_date) {
-        this.booking_id = booking_id;
+    public Booking( Customer customer, Car car) {
+
         this.customer = customer;
         this.car = car;
-        this.rent_date = rent_date;
-        this.return_date = return_date;
+
     }
 
     public Booking() {

@@ -4,8 +4,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloWorldController {
+public class HomeController {
 
-    @GetMapping("/hello") // det är "/hello" som är en endpoint
-    public String helloWorld(){return "Hello world!";}
+    @GetMapping()
+    public String home(){return "Hello world!";}
 }

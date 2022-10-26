@@ -34,12 +34,12 @@ public class AdminController {
         return new ResponseEntity<Admin>(adminS.getAdminById(id),HttpStatus.OK);
     }
 
-    @GetMapping("/updateAdmin/{id}")
+    @PutMapping("/updateAdmin/{id}")
     public ResponseEntity<Admin> updateAdmin(@PathVariable("id") int id, @RequestBody Admin admin){
         return new ResponseEntity<Admin>(adminS.updateAdmin(admin,id), HttpStatus.OK);
     }
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String>deleteAdmin(@PathVariable ("id") int id){
         adminS.deleteAdmin(id);
         return new ResponseEntity<String>("Admin deleted!", HttpStatus.OK);

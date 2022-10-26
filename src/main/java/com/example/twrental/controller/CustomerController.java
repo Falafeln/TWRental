@@ -20,25 +20,34 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
 
+
+
+    @GetMapping("/customers")
+    public List<Customer> getAllCustomers(){return customerService.getAllCustomers();}
+
+
+
+
+    //------------------------------------
+
     @PostMapping("/saveCustomer")
     public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer){
         return new ResponseEntity<Customer>(customerService.saveCustomer(customer), HttpStatus.CREATED);
     }
 
-    @GetMapping("/GET/api/v1/customers")
-    public List<Customer> getAllCustomers(){return customerService.getAllCustomers();}
+
 
     @GetMapping("/getCustomerID{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable("id") int id){
         return new ResponseEntity<Customer>(customerService.getCustomerById(id),HttpStatus.OK);
     }
 
-    @GetMapping("/updateCustomer/{id}")
+    @PutMapping("/updateCustomer/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable("id") int id, @RequestBody Customer customer){
         return new ResponseEntity<Customer>(customerService.updateCustomer(customer,id), HttpStatus.OK);
     }
 
-    @GetMapping("/deleteCustomer/{id}")
+    @DeleteMapping("/deleteCustomer/{id}")
     public ResponseEntity<String>deleteCustomer(@PathVariable ("id") int id){
         customerService.deleteCustomer(id);
         return new ResponseEntity<String>("Customer deleted!", HttpStatus.OK);

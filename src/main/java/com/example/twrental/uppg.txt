@@ -21,7 +21,7 @@ Kravspecifikation
         •Lista kunder GET /api/v1/customers
         •Lägga till fordon POST /api/v1/addcar
         •Ta bort fordon DELETE /api/v1/deletecar
-        •Uppdaterafordon PUT /api/v1/updatecar
+        •Uppdatera fordon PUT /api/v1/updatecar
         •Avboka order PUT /api/v1/cancelorder
 
     Viktigt att alla endpoints följer specifikationen eftersom de ska fungera med användargränssnittet.

@@ -10,6 +10,7 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
     List<Car> findCarByModelOrderByNameAsc(String model);
     List<Car> findCarByModelOrderByNameDesc(String model);
 
-    List <Car> findCarByBookedOrderByModel(boolean booked);
+
+
 
 }

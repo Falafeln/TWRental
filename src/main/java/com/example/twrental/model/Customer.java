@@ -1,5 +1,6 @@
 package com.example.twrental.model;
 
+import javax.annotation.security.DeclareRoles;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,7 +20,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cust_id", nullable = false)
-    private int cust_id;
+    private Integer cust_id;
     @Column(name = "username", nullable = false)
     private String username;
     @Column(name = "pwd", nullable = false)
@@ -39,15 +40,12 @@ public class Customer {
     @Column(name = "email", nullable = false)
     private String email;
 
-    //Dubbelkolla hur jag ska skriva denna, tog från tidigare projekt nu
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
-    private List<Booking> bookings = new ArrayList<>();
 
     public Customer() {
     }
 
-    public Customer(int cust_id, String username, String pwd, String first_name, String last_name, Adress adress, String phone, String email, List<Booking> bookings) {
-        this.cust_id = cust_id;
+    public Customer(String username, String pwd, String first_name, String last_name, Adress adress, String phone, String email) {
+
         this.username = username;
         this.pwd = pwd;
         this.first_name = first_name;
@@ -55,21 +53,14 @@ public class Customer {
         this.adress = adress;
         this.phone = phone;
         this.email = email;
-        this.bookings = bookings;
+
     }
 
-    public Customer(int cust_id, List<Booking> bookings) {
-        this.cust_id = cust_id;
-        this.bookings = bookings;
-    }
 
     public int getCust_id() {
         return cust_id;
     }
 
-    public void setCust_id(int cust_id) {
-        this.cust_id = cust_id;
-    }
 
     public String getUsername() {
         return username;
@@ -127,11 +118,4 @@ public class Customer {
         this.email = email;
     }
 
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
-    }
 }
