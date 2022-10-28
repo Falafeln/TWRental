@@ -1,5 +1,6 @@
 package com.example.twrental.controller;
 
+import com.example.twrental.VO.ResponseTemplateVO;
 import com.example.twrental.model.Booking;
 import com.example.twrental.model.Car;
 import com.example.twrental.repository.BookingRepository;
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/booking")
 public class BookingController {
 
     /*
@@ -49,6 +50,7 @@ public class BookingController {
         booking.setRent_date(LocalDateTime.now());
         booking.setReturn_date(LocalDateTime.now().plusDays(3));
 
+
         if(cars.contains(booking.getCar())){
             return new ResponseEntity<Booking>(bookingS.saveOrder(booking), HttpStatus.CREATED);
         }
@@ -66,6 +68,7 @@ public class BookingController {
         LocalDateTime rent_date = LocalDateTime.now().plusDays(day);
         bookingR.findById(booking_id).get().setRent_date(rent_date);
         bookingR.findById(booking_id).get().setReturn_date(rent_date.plusDays(3));
+
 
         return new ResponseEntity<Booking>(bookingS.updateOrder(bookingR.getById(booking_id),booking_id), HttpStatus.OK);
     } //Kolla om jag behöver hämta med bil o kund för att uppdatera
@@ -124,6 +127,11 @@ List<Booking> bookings =bookingR.findAll();
             }
         }
         return bookings;
+    }
+
+    @GetMapping("/booking/{id}")
+    public ResponseTemplateVO getBookingWithExchange(@PathVariable("id") int bookingId){
+        return bookingS.getBookingWithExchange(bookingId);
     }
 
 

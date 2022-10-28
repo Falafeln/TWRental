@@ -27,6 +27,7 @@ public class Booking {
     @JoinColumn(name = "car_id", referencedColumnName = "car_id")
     private Car car;
 
+
     @Column(name = "rent_date")
     private LocalDateTime rent_date;
 
@@ -82,4 +83,6 @@ public class Booking {
     public void setReturn_date(LocalDateTime return_date) {
         this.return_date = return_date;
     }
+
+
 }

@@ -47,6 +47,7 @@ public class CustomerService implements CustomerServiceInterface {
         c.setPhone(customer.getPhone());
         c.setAdress(customer.getAdress());
 
+
      //   c.setBookings(c.getBookings());
 
         customerRepository.save(c);
