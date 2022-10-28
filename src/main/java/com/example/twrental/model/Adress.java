@@ -28,8 +28,6 @@ public class Adress {
 @Column(name = "zip_code",nullable = false)
 private String zipCode;
 
-@OneToMany
-private List<Customer>customers = new ArrayList<>();
 
 
     public Adress() {
@@ -96,11 +94,5 @@ private List<Customer>customers = new ArrayList<>();
         this.zipCode = zipCode;
     }
 
-    public List<Customer> getCustomers() {
-        return customers;
-    }
 
-    public void setCustomers(List<Customer> customers) {
-        this.customers = customers;
-    }
 }

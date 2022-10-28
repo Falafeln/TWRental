@@ -1,24 +1,14 @@
 package com.example.twrental;
 
+//import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 
-import com.example.twrental.model.Admin;
-import com.example.twrental.model.Adress;
-import com.example.twrental.model.Booking;
-import com.example.twrental.model.Customer;
-
-import com.example.twrental.service.AdminService;
-import com.example.twrental.service.AdressService;
-
-import com.example.twrental.service.CustomerService;
-
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 @SpringBootApplication
 public class TwRentalApplication {
@@ -31,13 +21,8 @@ public class TwRentalApplication {
     }
 
 
-   @Bean
-    public CommandLineRunner init(){
-        return args -> {
-        };
-    }
-
     @Bean
+    @LoadBalanced
     public RestTemplate restTemplate(){
         return new RestTemplate();
     }
