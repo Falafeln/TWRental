@@ -2,6 +2,9 @@ package com.example.twrental;
 
 //import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 
+import com.example.twrental.model.Adress;
+import com.example.twrental.service.AdressService;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -22,6 +25,16 @@ public class TwRentalApplication {
 
 
     @Bean
+    public CommandLineRunner init(AdressService adressService){
+        return args -> {
+            Adress adress = new Adress("testvägen","12","Sundsvall","Sverige","8567");
+       adressService.saveAdress(adress);
+        };
+    }
+
+
+
+   @Bean
     @LoadBalanced
     public RestTemplate restTemplate(){
         return new RestTemplate();
